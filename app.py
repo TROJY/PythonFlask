@@ -5,9 +5,8 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
-@app.route('/')
-
-def hello_world():
+@app.route('/products')
+def getProducts():
 
      list = [
             {
@@ -64,4 +63,17 @@ def hello_world():
      
      return json.dumps(list)
 
+@app.route('/product/<id>')
+def page(id):
+    products = id
+    return {
+              "productId": 1,
+              "productName": "Leaf Rake",
+              "productCode": "GDN-0011",
+              "releaseDate": "March 19, 2021",
+              "description": "Leaf rake with 48-inch wooden handle.",
+              "price": 19.95,
+              "starRating": 3.2,
+              "imageUrl": "assets/images/leaf_rake.png"
+            }
 
